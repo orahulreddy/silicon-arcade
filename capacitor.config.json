@@ -1,0 +1,6 @@
+{
+  "appId": "in.siliconarcade.hub",
+  "appName": "Silicon Arcade",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
