@@ -194,6 +194,7 @@
         aiScoreEl.textContent = aiScore;
         createExplosion(ball.x + 10, ball.y, '#f87171');
         playBeep(180, 'sawtooth', 0.2);
+        triggerHaptic('HEAVY');
         if (aiScore >= maxScore) gameOver = true;
         else resetBall('ai');
       } else if (ball.x > canvas.width) {
