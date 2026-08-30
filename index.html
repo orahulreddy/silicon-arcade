@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silicon Arcade // System Online</title>
@@ -39,13 +40,21 @@
   <!-- Arcade Hub Grid -->
   <main class="max-w-4xl mx-auto w-full my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     
-    <!-- Card 1: The Workshop -->
-    <a href="/pong.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
-      <div class="text-xs font-semibold text-sky-400 mb-2">// 01_THE_WORKSHOP</div>
-      <h2 class="text-lg font-bold text-white mb-2">Neon Pong [Playable]</h2>
-      <p class="text-sm text-zinc-400 mb-4">A fast-paced canvas arcade classic with adaptive AI and synthetic audio.</p>
-      <span class="text-xs text-sky-400 font-semibold">▶ PLAY NOW &rarr;</span>
-    </a>
+ <!-- Card 1: The Workshop -->
+ <div class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block">
+   <div class="text-xs font-semibold text-sky-400 mb-2">// 01_THE_WORKSHOP</div>
+   <h2 class="text-lg font-bold text-white mb-2">Original Games & Tools</h2>
+   <p class="text-sm text-zinc-400 mb-4">Custom interactive canvas engines built from scratch.</p>
+
+   <div class="flex flex-wrap gap-2 mt-2">
+     <a href="/pong.html" class="px-3 py-1.5 bg-zinc-800 hover:bg-sky-950/70 border border-zinc-700 hover:border-sky-400 rounded text-xs text-sky-300 font-semibold transition-all">
+       ▶ Neon Pong
+     </a>
+     <a href="/snake.html" class="px-3 py-1.5 bg-zinc-800 hover:bg-emerald-950/70 border border-zinc-700 hover:border-emerald-400 rounded text-xs text-emerald-300 font-semibold transition-all">
+       ▶ Cyber Snake
+     </a>
+   </div>
+ </div>
 
     <!-- Card 2: The Machine -->
     <a href="/sandbox.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
