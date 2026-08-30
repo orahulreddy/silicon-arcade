@@ -25,7 +25,7 @@
     </a>
     <div class="text-xs text-sky-400 font-bold">SYSTEM // CYBER_SNAKE_v1.0</div>
   </header>
-
+<script src="haptics.js"></script>
   <!-- Game Stage -->
   <main class="flex flex-col items-center my-6">
     <div class="flex justify-between w-full max-w-[500px] mb-3 text-sm px-2">
@@ -165,6 +165,7 @@
         if (segment.x === head.x && segment.y === head.y) {
           gameOver = true;
           playBeep(140, 'sawtooth', 0.3);
+          triggerHaptic('HEAVY');
           return;
         }
       }
@@ -182,6 +183,7 @@
         }
         createFoodBurst(food.x, food.y);
         playBeep(660, 'sine', 0.1);
+        triggerHaptic('LIGHT');
         spawnFood();
       } else {
         snake.pop();
