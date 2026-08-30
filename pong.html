@@ -24,7 +24,7 @@
     </a>
     <div class="text-xs text-emerald-400 font-bold">SYSTEM // NEON_PONG_v1.0</div>
   </header>
-
+<script src="haptics.js"></script>
   <!-- Game Stage -->
   <main class="flex flex-col items-center my-6">
     <div class="flex justify-between w-full max-w-[700px] mb-3 text-sm px-2">
@@ -170,6 +170,7 @@
         ball.vy = ball.speed * Math.sin(offset * 0.7);
         createExplosion(ball.x, ball.y, '#34d399');
         playBeep(440, 'square');
+        triggerHaptic('LIGHT');
       }
 
       // Check AI Paddle Collision
