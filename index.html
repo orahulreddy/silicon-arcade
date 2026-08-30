@@ -11,29 +11,36 @@
   <style>
     body { font-family: 'Fira Code', monospace; }
     .neon-border:hover {
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
       border-color: #38bdf8;
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col justify-between p-6 md:p-12">
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col justify-between p-6 md:p-12 select-none">
 
   <!-- Header -->
-  <header class="max-w-4xl mx-auto w-full flex justify-between items-center border-b border-zinc-800 pb-6">
+  <header class="max-w-4xl mx-auto w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 border-b border-zinc-800 pb-6">
     <div>
       <h1 class="text-2xl font-bold tracking-wider text-emerald-400">SILICON_ARCADE.IN</h1>
       <p class="text-xs text-zinc-400 mt-1">[System Status: Operational // v0.1]</p>
     </div>
-    <span class="inline-flex items-center gap-2 px-3 py-1 text-xs border border-emerald-500/40 text-emerald-300 rounded-full bg-emerald-950/40">
-      <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span> Ready
-    </span>
+
+    <!-- Status & Audio Toggle Button -->
+    <div class="flex items-center gap-3">
+      <button id="sfxToggleBtn" onclick="toggleAudio()" class="px-3 py-1 text-xs border border-zinc-700 bg-zinc-900/80 hover:border-emerald-500/50 rounded-md text-zinc-400 hover:text-emerald-300 transition-all flex items-center gap-2">
+        <span id="sfxIcon">🔇</span> <span id="sfxText">SFX: OFF</span>
+      </button>
+      <span class="inline-flex items-center gap-2 px-3 py-1 text-xs border border-emerald-500/40 text-emerald-300 rounded-full bg-emerald-950/40">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span> Ready
+      </span>
+    </div>
   </header>
 
- <!-- Arcade Hub Grid -->
+  <!-- Arcade Hub Grid -->
   <main class="max-w-4xl mx-auto w-full my-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     
     <!-- Card 1: The Workshop -->
-    <a href="/pong.html" class="border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
+    <a href="/pong.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
       <div class="text-xs font-semibold text-sky-400 mb-2">// 01_THE_WORKSHOP</div>
       <h2 class="text-lg font-bold text-white mb-2">Neon Pong [Playable]</h2>
       <p class="text-sm text-zinc-400 mb-4">A fast-paced canvas arcade classic with adaptive AI and synthetic audio.</p>
@@ -41,7 +48,7 @@
     </a>
 
     <!-- Card 2: The Machine -->
-    <a href="/sandbox.html" class="border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
+    <a href="/sandbox.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
       <div class="text-xs font-semibold text-purple-400 mb-2">// 02_THE_MACHINE</div>
       <h2 class="text-lg font-bold text-white mb-2">Neural Matrix [Interactive]</h2>
       <p class="text-sm text-zinc-400 mb-4">Real-time particle node simulation with dynamic gravity and neon palette controls.</p>
@@ -49,7 +56,7 @@
     </a>
 
     <!-- Card 3: The Gallery -->
-    <a href="/gallery.html" class="border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
+    <a href="/gallery.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
       <div class="text-xs font-semibold text-amber-400 mb-2">// 03_THE_GALLERY</div>
       <h2 class="text-lg font-bold text-white mb-2">Curated Web Games</h2>
       <p class="text-sm text-zinc-400 mb-4">Playable PICO-8 arcade carts, open-source gems, and retro ports.</p>
@@ -57,7 +64,7 @@
     </a>
 
     <!-- Card 4: The Ledger -->
-    <a href="/ledger.html" class="border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
+    <a href="/ledger.html" class="arcade-card border border-zinc-800 bg-zinc-900/60 p-6 rounded-lg neon-border transition-all duration-300 block hover:-translate-y-1">
       <div class="text-xs font-semibold text-emerald-400 mb-2">// 04_THE_LEDGER</div>
       <h2 class="text-lg font-bold text-white mb-2">Hardware & Tech Logs</h2>
       <p class="text-sm text-zinc-400 mb-4">Deep dives into computing architecture, handheld emulation, and silicon.</p>
@@ -68,8 +75,66 @@
 
   <!-- Footer -->
   <footer class="max-w-4xl mx-auto w-full border-t border-zinc-800 pt-6 text-center text-xs text-zinc-400">
-    Silicon Arcade © 2026 • Crafted with the help of Google Gemini.
+    Silicon Arcade © 2026 • Crafted with lightweight web tech and with help of Google Gemini.
   </footer>
 
+  <!-- Web Audio SFX Engine -->
+  <script>
+    let sfxEnabled = false;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleAudio() {
+      initAudio();
+      sfxEnabled = !sfxEnabled;
+      const sfxIcon = document.getElementById('sfxIcon');
+      const sfxText = document.getElementById('sfxText');
+      const btn = document.getElementById('sfxToggleBtn');
+
+      if (sfxEnabled) {
+        sfxIcon.textContent = '🔊';
+        sfxText.textContent = 'SFX: ON';
+        btn.classList.add('border-emerald-500', 'text-emerald-300');
+        playSynth(587.33, 'triangle', 0.08); // D5 chime
+        setTimeout(() => playSynth(880, 'triangle', 0.12), 80); // A5 chime
+      } else {
+        sfxIcon.textContent = '🔇';
+        sfxText.textContent = 'SFX: OFF';
+        btn.classList.remove('border-emerald-500', 'text-emerald-300');
+      }
+    }
+
+    function playSynth(freq, type = 'square', duration = 0.05, gainValue = 0.05) {
+      if (!sfxEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(gainValue, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    // Attach hover and click sound effects to cards
+    document.querySelectorAll('.arcade-card').forEach(card => {
+      card.addEventListener('mouseenter', () => playSynth(440, 'sine', 0.03, 0.03));
+      card.addEventListener('click', () => {
+        playSynth(659.25, 'square', 0.08, 0.06);
+      });
+    });
+  </script>
 </body>
 </html>
