@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silicon Arcade // Curated Web Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Fira Code', monospace; }
+    .arcade-frame {
+      box-shadow: 0 0 25px rgba(251, 191, 36, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col items-center justify-between p-4 md:p-8">
+
+  <!-- Header -->
+  <header class="max-w-4xl w-full flex justify-between items-center border-b border-zinc-800 pb-4">
+    <a href="/" class="text-xs text-zinc-400 hover:text-amber-400 transition-colors flex items-center gap-1">
+      &larr; [RETURN_TO_HUB]
+    </a>
+    <div class="text-xs text-amber-400 font-bold">THE_GALLERY // PICO-8_ARCHIVE</div>
+  </header>
+
+  <!-- Featured Playable Game Cabinet -->
+  <main class="max-w-4xl w-full my-6 flex flex-col items-center">
+    <div class="w-full bg-zinc-900 border border-zinc-800 p-4 rounded-xl arcade-frame mb-8">
+      <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-2 border-b border-zinc-800 pb-3">
+        <div>
+          <span class="text-xs text-amber-400 font-semibold">// FEATURED_CART_001</span>
+          <h2 class="text-lg font-bold text-white">Celeste (PICO-8 Classic)</h2>
+        </div>
+        <div class="text-xs text-zinc-400">
+          Controls: <span class="text-zinc-200">Arrow Keys</span> • Jump: <span class="text-zinc-200">[C] / [O]</span> • Dash: <span class="text-zinc-200">[X]</span>
+        </div>
+      </div>
+
+      <!-- PICO-8 Player Iframe -->
+      <div class="relative w-full aspect-[4/3] max-w-[640px] mx-auto bg-black rounded-lg overflow-hidden border border-zinc-800">
+        <iframe 
+          src="https://www.lexaloffle.com/bbs/widget.php?pid=celeste" 
+          class="w-full h-full border-0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="text-center text-xs text-zinc-400 mt-3">Original masterpiece created by Maddy Thorson & Noel Berry.</p>
+    </div>
+
+    <!-- More Curated Gems -->
+    <div class="w-full">
+      <h3 class="text-sm font-bold text-zinc-300 mb-4 border-l-2 border-amber-400 pl-2">CURATED OPEN-SOURCE REPOSITORIES</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <a href="https://github.com/mmatyas/super-tux-kart" target="_blank" class="p-4 bg-zinc-900/60 border border-zinc-800 rounded-lg hover:border-amber-400 transition-all block">
+          <div class="text-xs text-amber-400 mb-1">3D Kart Racing</div>
+          <div class="font-bold text-white text-sm">SuperTuxKart</div>
+          <p class="text-xs text-zinc-400 mt-1">Open-source 3D arcade racer with custom physics and network play.</p>
+        </a>
+
+        <a href="https://github.com/sandover/pico-8-games" target="_blank" class="p-4 bg-zinc-900/60 border border-zinc-800 rounded-lg hover:border-amber-400 transition-all block">
+          <div class="text-xs text-amber-400 mb-1">Cartridge Vault</div>
+          <div class="font-bold text-white text-sm">PICO-8 Awesome Collection</div>
+          <p class="text-xs text-zinc-400 mt-1">Directory of top open-source demoscene carts, rogue-lites, and tools.</p>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-xs text-zinc-600 text-center pt-4">
+    Silicon Arcade • Curated retro-computing & open game index
+  </footer>
+
+</body>
+</html>
