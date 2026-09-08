@@ -19,6 +19,15 @@
       --accent: #34d399;
       --accent-glow: rgba(52, 211, 153, 0.35);
     }
+    [data-theme="light-gold"] {
+      --bg-page: #0d0c09;
+      --bg-surface: rgba(26, 24, 20, 0.75);
+      --border-color: #3d3628;
+      --text-main: #fefce8;
+      --text-muted: #ca8a04;
+      --accent: #facc15; /* Crisp Light Gold / Yellow-400 */
+      --accent-glow: rgba(250, 204, 21, 0.35);
+    }
     [data-theme="amber-crt"] {
       --bg-page: #0c0a09;
       --bg-surface: rgba(28, 25, 23, 0.75);
@@ -145,9 +154,10 @@
   </footer>
 
   <script>
-    // Theme Engine
+    // Theme Engine with Light Gold included
     const themes = [
       { id: 'default', label: 'EMERALD' },
+      { id: 'light-gold', label: 'LIGHT_GOLD' },
       { id: 'amber-crt', label: 'AMBER_CRT' },
       { id: 'synthwave', label: 'SYNTHWAVE' },
       { id: 'matrix', label: 'MATRIX' }
