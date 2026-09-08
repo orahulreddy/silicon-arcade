@@ -88,22 +88,54 @@
   </footer>
 
   <script>
-    const wordVault = [
-      { word: "CIRCUIT", pos: "Noun", clue: "A closed loop through which an electric current can flow." },
-      { word: "PROTOCOL", pos: "Noun", clue: "A set of formal conventions governing data transmission." },
-      { word: "ALGORITHM", pos: "Noun", clue: "A finite sequence of instructions to solve a computation." },
-      { word: "SYNTAX", pos: "Noun", clue: "The spelling and grammar rules defining computer language." },
-      { word: "BINARY", pos: "Adjective", clue: "A numeric system expressed entirely in base two (0 and 1)." },
-      { word: "ENCRYPT", pos: "Verb", clue: "Convert information into a cipher code to prevent unauthorized access." },
-      { word: "KERNEL", pos: "Noun", clue: "The central foundational module of an operating system." },
-      { word: "LATENCY", pos: "Noun", clue: "The time delay between input stimulus and software output." },
-      { word: "CACHE", pos: "Noun", clue: "A high-speed hardware or software buffer for frequent instructions." },
-      { word: "BANDWIDTH", pos: "Noun", clue: "The maximum transmission capacity of a digital network path." },
-      { word: "VIRTUAL", pos: "Adjective", clue: "Not physically existing as such but made by software." },
-      { word: "QUANTUM", pos: "Noun", clue: "The minimum discrete unit of any physical entity or property." },
-      { word: "PARALLEL", pos: "Adjective", clue: "Simultaneous execution of multiple tasks across processors." },
-      { word: "VARIABLE", pos: "Noun", clue: "A symbolic storage address containing a modifiable value." },
-      { word: "DEBUG", pos: "Verb", clue: "Locate, trace, and rectify software bugs or defects." }
+     const wordVault = [
+      // --- SCIENCE & NATURE ---
+      { word: "HABITAT", pos: "Noun", clue: "The natural home or environment where an animal or plant lives." },
+      { word: "SKELETON", pos: "Noun", clue: "The internal framework of bones supporting an animal body." },
+      { word: "PREDATOR", pos: "Noun", clue: "An animal that hunts, catches, and eats other animals for food." },
+      { word: "NUTRIENT", pos: "Noun", clue: "A substance needed by living things to grow, stay healthy, and survive." },
+      { word: "FRICTION", pos: "Noun", clue: "The resistance force created when two touching surfaces slide against each other." },
+      { word: "SOLVENT", pos: "Noun", clue: "A liquid substance capable of dissolving other materials." },
+      { word: "ECOSYSTEM", pos: "Noun", clue: "A biological community of interacting organisms and their physical environment." },
+      { word: "POLLINATE", pos: "Verb", clue: "To carry pollen from one flower to another so seeds can form." },
+      { word: "HUMIDITY", pos: "Noun", clue: "The concentration of invisible water vapour present in the air." },
+      { word: "ORGANISM", pos: "Noun", clue: "An individual animal, plant, or single-celled life form." },
+
+      // --- GRAMMAR & LITERATURE ---
+      { word: "PRONOUN", pos: "Noun", clue: "A word that substitutes for a noun, such as 'he', 'she', or 'it'." },
+      { word: "ADJECTIVE", pos: "Noun", clue: "A word that modifies or describes a person, place, or thing." },
+      { word: "SYNONYM", pos: "Noun", clue: "A word that has the identical or nearly identical meaning to another." },
+      { word: "ANTONYM", pos: "Noun", clue: "A word having a meaning completely opposite to that of another word." },
+      { word: "NARRATOR", pos: "Noun", clue: "The person or character who recounts and tells the story." },
+      { word: "DIALOGUE", pos: "Noun", clue: "A spoken conversation between two or more characters in a text." },
+      { word: "ALLITERATION", pos: "Noun", clue: "The repetition of the same initial letter sound in close words." },
+      { word: "SIMILE", pos: "Noun", clue: "Comparing two distinct things using the words 'like' or 'as'." },
+
+      // --- GEOGRAPHY & EARTH SCIENCE ---
+      { word: "EQUATOR", pos: "Noun", clue: "An imaginary line circling the Earth halfway between the poles." },
+      { word: "GLACIER", pos: "Noun", clue: "A massive, slowly moving river of compressed snow and ice." },
+      { word: "VOLCANO", pos: "Noun", clue: "A mountain vent where molten lava, ash, and gases erupt to the surface." },
+      { word: "ALTITUDE", pos: "Noun", clue: "The vertical elevation or height of an object above sea level." },
+      { word: "PLATEAU", pos: "Noun", clue: "A large, elevated area of relatively flat land rising sharply." },
+      { word: "CONTINENT", pos: "Noun", clue: "One of the Earth's primary continuous landmasses (e.g., Asia, Africa)." },
+      { word: "MINERAL", pos: "Noun", clue: "A naturally occurring, solid inorganic substance with fixed composition." },
+
+      // --- MATHEMATICS & LOGIC ---
+      { word: "FRACTION", pos: "Noun", clue: "A numerical quantity representing a part of an entire whole unit." },
+      { word: "DECIMAL", pos: "Noun", clue: "A number expressed in a counting system based on tenths and powers of 10." },
+      { word: "PERIMETER", pos: "Noun", clue: "The total distance around the outer boundary edge of a 2D shape." },
+      { word: "DIAMETER", pos: "Noun", clue: "A straight line crossing directly through the center of a circle." },
+      { word: "POLYGON", pos: "Noun", clue: "A plane 2D geometric shape with at least three straight sides." },
+      { word: "PARALLEL", pos: "Adjective", clue: "Lines lying side by side that maintain equal distance and never intersect." },
+      { word: "SYMMETRY", pos: "Noun", clue: "The quality of having balanced, identical halves facing each other." },
+
+      // --- CIVICS & HISTORY ---
+      { word: "MONARCH", pos: "Noun", clue: "A royal sovereign ruler of a kingdom, such as a King or Queen." },
+      { word: "CITIZEN", pos: "Noun", clue: "A recognized, legally belonging member of a sovereign state or nation." },
+      { word: "ELECTION", pos: "Noun", clue: "A formal collective voting process to choose a representative leader." },
+      { word: "HERITAGE", pos: "Noun", clue: "Valued cultural traditions and historical sites inherited from past generations." },
+      { word: "DYNASTY", pos: "Noun", clue: "A succession of rulers belonging to the identical hereditary family." }
+    ];
     ];
 
     const partOfSpeechEl = document.getElementById('partOfSpeech');
