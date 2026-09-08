@@ -90,18 +90,54 @@
 
   <script>
     const geoData = [
+      const geoData = [
+      // Asia & Oceania
       { country: "Japan", capital: "Tokyo", region: "East Asia", currency: "Yen (¥)", landmark: "Mount Fuji" },
       { country: "India", capital: "New Delhi", region: "South Asia", currency: "Indian Rupee (₹)", landmark: "Taj Mahal" },
-      { country: "Brazil", capital: "Brasília", region: "South America", currency: "Real (R$)", landmark: "Christ the Redeemer" },
-      { country: "Australia", capital: "Canberra", region: "Oceania", currency: "Australian Dollar (A$)", landmark: "Sydney Opera House" },
-      { country: "Egypt", capital: "Cairo", region: "North Africa", currency: "Egyptian Pound (E£)", landmark: "Giza Necropolis" },
-      { country: "Canada", capital: "Ottawa", region: "North America", currency: "Canadian Dollar (C$)", landmark: "Niagara Falls" },
-      { country: "France", capital: "Paris", region: "Western Europe", currency: "Euro (€)", landmark: "Eiffel Tower" },
       { country: "South Korea", capital: "Seoul", region: "East Asia", currency: "Won (₩)", landmark: "Gyeongbokgung Palace" },
-      { country: "Kenya", capital: "Nairobi", region: "East Africa", currency: "Kenyan Shilling (KSh)", landmark: "Maasai Mara" },
+      { country: "Australia", capital: "Canberra", region: "Oceania", currency: "Australian Dollar (A$)", landmark: "Sydney Opera House" },
+      { country: "New Zealand", capital: "Wellington", region: "Oceania", currency: "NZ Dollar (NZ$)", landmark: "Milford Sound" },
+      { country: "Singapore", capital: "Singapore", region: "Southeast Asia", currency: "Singapore Dollar (S$)", landmark: "Marina Bay Sands" },
+      { country: "Thailand", capital: "Bangkok", region: "Southeast Asia", currency: "Baht (฿)", landmark: "Wat Arun" },
+      { country: "Vietnam", capital: "Hanoi", region: "Southeast Asia", currency: "Dong (₫)", landmark: "Ha Long Bay" },
+      { country: "Indonesia", capital: "Jakarta", region: "Southeast Asia", currency: "Rupiah (Rp)", landmark: "Borobudur" },
+      { country: "Saudi Arabia", capital: "Riyadh", region: "Middle East", currency: "Saudi Riyal (SAR)", landmark: "Kingdom Centre" },
+      { country: "United Arab Emirates", capital: "Abu Dhabi", region: "Middle East", currency: "UAE Dirham (AED)", landmark: "Burj Khalifa" },
+      { country: "Turkey", capital: "Ankara", region: "Eurasia", currency: "Turkish Lira (₺)", landmark: "Hagia Sophia" },
+
+      // Europe
+      { country: "France", capital: "Paris", region: "Western Europe", currency: "Euro (€)", landmark: "Eiffel Tower" },
       { country: "Germany", capital: "Berlin", region: "Central Europe", currency: "Euro (€)", landmark: "Brandenburg Gate" },
+      { country: "United Kingdom", capital: "London", region: "Western Europe", currency: "Pound Sterling (£)", landmark: "Big Ben" },
+      { country: "Italy", capital: "Rome", region: "Southern Europe", currency: "Euro (€)", landmark: "Colosseum" },
+      { country: "Spain", capital: "Madrid", region: "Southern Europe", currency: "Euro (€)", landmark: "Sagrada Família" },
+      { country: "Greece", capital: "Athens", region: "Southern Europe", currency: "Euro (€)", landmark: "Acropolis of Athens" },
+      { country: "Netherlands", capital: "Amsterdam", region: "Western Europe", currency: "Euro (€)", landmark: "Rijksmuseum" },
+      { country: "Switzerland", capital: "Bern", region: "Central Europe", currency: "Swiss Franc (CHF)", landmark: "The Matterhorn" },
+      { country: "Norway", capital: "Oslo", region: "Northern Europe", currency: "Norwegian Krone (kr)", landmark: "Geirangerfjord" },
+      { country: "Sweden", capital: "Stockholm", region: "Northern Europe", currency: "Swedish Krona (kr)", landmark: "Vasa Museum" },
       { country: "Iceland", capital: "Reykjavík", region: "Northern Europe", currency: "Icelandic Króna (kr)", landmark: "Blue Lagoon" },
-      { country: "Mexico", capital: "Mexico City", region: "North America", currency: "Mexican Peso ($)", landmark: "Chichen Itza" }
+      { country: "Ireland", capital: "Dublin", region: "Western Europe", currency: "Euro (€)", landmark: "Cliffs of Moher" },
+      { country: "Portugal", capital: "Lisbon", region: "Southern Europe", currency: "Euro (€)", landmark: "Belém Tower" },
+      { country: "Poland", capital: "Warsaw", region: "Central Europe", currency: "Złoty (zł)", landmark: "Wawel Royal Castle" },
+
+      // Americas
+      { country: "Canada", capital: "Ottawa", region: "North America", currency: "Canadian Dollar (C$)", landmark: "Niagara Falls" },
+      { country: "United States", capital: "Washington, D.C.", region: "North America", currency: "US Dollar ($)", landmark: "Statue of Liberty" },
+      { country: "Mexico", capital: "Mexico City", region: "North America", currency: "Mexican Peso ($)", landmark: "Chichen Itza" },
+      { country: "Brazil", capital: "Brasília", region: "South America", currency: "Real (R$)", landmark: "Christ the Redeemer" },
+      { country: "Argentina", capital: "Buenos Aires", region: "South America", currency: "Argentine Peso ($)", landmark: "Iguazu Falls" },
+      { country: "Chile", capital: "Santiago", region: "South America", currency: "Chilean Peso ($)", landmark: "Torres del Paine" },
+      { country: "Peru", capital: "Lima", region: "South America", currency: "Sol (S/.)", landmark: "Machu Picchu" },
+      { country: "Colombia", capital: "Bogotá", region: "South America", currency: "Colombian Peso ($)", landmark: "Santuario de Las Lajas" },
+
+      // Africa
+      { country: "Egypt", capital: "Cairo", region: "North Africa", currency: "Egyptian Pound (E£)", landmark: "Giza Necropolis" },
+      { country: "Kenya", capital: "Nairobi", region: "East Africa", currency: "Kenyan Shilling (KSh)", landmark: "Maasai Mara" },
+      { country: "South Africa", capital: "Pretoria", region: "Southern Africa", currency: "South African Rand (R)", landmark: "Table Mountain" },
+      { country: "Morocco", capital: "Rabat", region: "North Africa", currency: "Moroccan Dirham (MAD)", landmark: "Hassan II Mosque" },
+      { country: "Nigeria", capital: "Abuja", region: "West Africa", currency: "Naira (₦)", landmark: "Zuma Rock" },
+      { country: "Tanzania", capital: "Dodoma", region: "East Africa", currency: "Tanzanian Shilling (TSh)", landmark: "Mount Kilimanjaro" }
     ];
 
     const clueRegionEl = document.getElementById('clueRegion');
