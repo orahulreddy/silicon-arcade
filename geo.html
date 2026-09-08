@@ -76,7 +76,7 @@
     <!-- 4 Option Coordinates -->
     <div class="w-full bg-zinc-900 border border-zinc-800 rounded-b-lg p-4 flex flex-col gap-2.5">
       <div id="optionsGrid" class="grid grid-cols-1 gap-2">
-        <!-- Buttons injected by JS -->
+        <!-- Injected via JavaScript -->
       </div>
       <div id="statusMsg" class="text-center text-xs text-zinc-500 pt-1">
         Identify target country from telemetry
@@ -90,9 +90,7 @@
 
   <script>
     const geoData = [
-      const geoData = [
-      const geoData = [
-      // --- ASIA (48) ---
+      // ASIA (48)
       { country: "Afghanistan", capital: "Kabul", region: "South Asia", currency: "Afghani (AFN)", landmark: "Band-e Amir" },
       { country: "Armenia", capital: "Yerevan", region: "Western Asia", currency: "Dram (AMD)", landmark: "Geghard Monastery" },
       { country: "Azerbaijan", capital: "Baku", region: "Western Asia", currency: "Manat (AZN)", landmark: "Flame Towers" },
@@ -142,7 +140,7 @@
       { country: "Vietnam", capital: "Hanoi", region: "Southeast Asia", currency: "Dong (VND)", landmark: "Ha Long Bay" },
       { country: "Yemen", capital: "Sana'a", region: "Middle East", currency: "Yemeni Rial (YER)", landmark: "Old City of Sana'a" },
 
-      // --- EUROPE (44) ---
+      // EUROPE (44)
       { country: "Albania", capital: "Tirana", region: "Southern Europe", currency: "Lek (ALL)", landmark: "Rozafa Castle" },
       { country: "Andorra", capital: "Andorra la Vella", region: "Southern Europe", currency: "Euro (€)", landmark: "Casa de la Vall" },
       { country: "Austria", capital: "Vienna", region: "Central Europe", currency: "Euro (€)", landmark: "Schönbrunn Palace" },
@@ -150,7 +148,7 @@
       { country: "Belgium", capital: "Brussels", region: "Western Europe", currency: "Euro (€)", landmark: "Atomium" },
       { country: "Bosnia and Herzegovina", capital: "Sarajevo", region: "Southern Europe", currency: "Convertible Mark (BAM)", landmark: "Stari Most" },
       { country: "Bulgaria", capital: "Sofia", region: "Eastern Europe", currency: "Lev (BGN)", landmark: "Alexander Nevsky Cathedral" },
-      { country: "Croatia", capital: "Zagreb", region: "Southern Europe", currency: "Euro (€)", landmark: "Dubrovnik Old Town Walls" },
+      { country: "Croatia", capital: "Zagreb", region: "Southern Europe", currency: "Euro (€)", landmark: "Dubrovnik Walls" },
       { country: "Czech Republic", capital: "Prague", region: "Central Europe", currency: "Czech Koruna (CZK)", landmark: "Charles Bridge" },
       { country: "Denmark", capital: "Copenhagen", region: "Northern Europe", currency: "Danish Krone (DKK)", landmark: "Nyhavn" },
       { country: "Estonia", capital: "Tallinn", region: "Northern Europe", currency: "Euro (€)", landmark: "Alexander Nevsky Cathedral" },
@@ -188,7 +186,7 @@
       { country: "United Kingdom", capital: "London", region: "Western Europe", currency: "Pound Sterling (£)", landmark: "Big Ben" },
       { country: "Vatican City", capital: "Vatican City", region: "Southern Europe", currency: "Euro (€)", landmark: "St. Peter's Basilica" },
 
-      // --- AFRICA (54) ---
+      // AFRICA (54)
       { country: "Algeria", capital: "Algiers", region: "North Africa", currency: "Algerian Dinar (DZD)", landmark: "Casbah of Algiers" },
       { country: "Angola", capital: "Luanda", region: "Central Africa", currency: "Kwanza (AOA)", landmark: "Kalandula Falls" },
       { country: "Benin", capital: "Porto-Novo", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Royal Palaces of Abomey" },
@@ -200,20 +198,20 @@
       { country: "Central African Republic", capital: "Bangui", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Dzanga-Sangha Reserve" },
       { country: "Chad", capital: "N'Djamena", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Ennedi Plateau" },
       { country: "Comoros", capital: "Moroni", region: "East Africa", currency: "Comorian Franc (KMF)", landmark: "Mount Karthala" },
-      { country: "Congo, Republic of the", capital: "Brazzaville", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Odzala-Kokoua National Park" },
+      { country: "Republic of the Congo", capital: "Brazzaville", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Odzala-Kokoua National Park" },
       { country: "DR Congo", capital: "Kinshasa", region: "Central Africa", currency: "Congolese Franc (CDF)", landmark: "Virunga Volcanoes" },
       { country: "Djibouti", capital: "Djibouti City", region: "East Africa", currency: "Djiboutian Franc (DJF)", landmark: "Lake Assal" },
       { country: "Egypt", capital: "Cairo", region: "North Africa", currency: "Egyptian Pound (EGP)", landmark: "Giza Necropolis" },
       { country: "Equatorial Guinea", capital: "Malabo", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Malabo Cathedral" },
-      { country: "Eritrea", capital: "Asmara", region: "East Africa", currency: "Nakfa (ERN)", landmark: "Church of Our Lady of the Rosary" },
-      { country: "Eswatini", capital: "Mbabane", region: "Southern Africa", currency: "Lilangeni (SZL)", landmark: "Hlane Royal National Park" },
-      { country: "Ethiopia", capital: "Addis Ababa", region: "East Africa", currency: "Birr (ETB)", landmark: "Rock-Hewn Churches of Lalibela" },
+      { country: "Eritrea", capital: "Asmara", region: "East Africa", currency: "Nakfa (ERN)", landmark: "Our Lady of the Rosary" },
+      { country: "Eswatini", capital: "Mbabane", region: "Southern Africa", currency: "Lilangeni (SZL)", landmark: "Hlane Royal Park" },
+      { country: "Ethiopia", capital: "Addis Ababa", region: "East Africa", currency: "Birr (ETB)", landmark: "Churches of Lalibela" },
       { country: "Gabon", capital: "Libreville", region: "Central Africa", currency: "CFA Franc (XAF)", landmark: "Loango National Park" },
       { country: "Gambia", capital: "Banjul", region: "West Africa", currency: "Dalasi (GMD)", landmark: "Kunta Kinteh Island" },
       { country: "Ghana", capital: "Accra", region: "West Africa", currency: "Cedi (GHS)", landmark: "Cape Coast Castle" },
-      { country: "Guinea", capital: "Conakry", region: "West Africa", currency: "Guinean Franc (GNF)", landmark: "Fouta Djallon Highlands" },
+      { country: "Guinea", capital: "Conakry", region: "West Africa", currency: "Guinean Franc (GNF)", landmark: "Fouta Djallon" },
       { country: "Guinea-Bissau", capital: "Bissau", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Bijagós Archipelago" },
-      { country: "Ivory Coast", capital: "Yamoussoukro", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Basilica of Our Lady of Peace" },
+      { country: "Ivory Coast", capital: "Yamoussoukro", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Our Lady of Peace" },
       { country: "Kenya", capital: "Nairobi", region: "East Africa", currency: "Kenyan Shilling (KES)", landmark: "Maasai Mara" },
       { country: "Lesotho", capital: "Maseru", region: "Southern Africa", currency: "Loti (LSL)", landmark: "Maletsunyane Falls" },
       { country: "Liberia", capital: "Monrovia", region: "West Africa", currency: "Liberian Dollar (LRD)", landmark: "Sapo National Park" },
@@ -238,16 +236,16 @@
       { country: "South Sudan", capital: "Juba", region: "East Africa", currency: "South Sudanese Pound (SSP)", landmark: "Sudd Wetlands" },
       { country: "Sudan", capital: "Khartoum", region: "North Africa", currency: "Sudanese Pound (SDG)", landmark: "Meroë Pyramids" },
       { country: "Tanzania", capital: "Dodoma", region: "East Africa", currency: "Tanzanian Shilling (TZS)", landmark: "Mount Kilimanjaro" },
-      { country: "Togo", capital: "Lomé", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Koutammakou Landscape" },
-      { country: "Tunisia", capital: "Tunis", region: "North Africa", currency: "Tunisian Dinar (TND)", landmark: "Amphitheatre of El Jem" },
+      { country: "Togo", capital: "Lomé", region: "West Africa", currency: "CFA Franc (XOF)", landmark: "Koutammakou" },
+      { country: "Tunisia", capital: "Tunis", region: "North Africa", currency: "Tunisian Dinar (TND)", landmark: "El Jem Amphitheatre" },
       { country: "Uganda", capital: "Kampala", region: "East Africa", currency: "Ugandan Shilling (UGX)", landmark: "Bwindi Impenetrable Forest" },
       { country: "Zambia", capital: "Lusaka", region: "Southern Africa", currency: "Zambian Kwacha (ZMW)", landmark: "Victoria Falls" },
       { country: "Zimbabwe", capital: "Harare", region: "Southern Africa", currency: "Zimbabwe Gold (ZiG)", landmark: "Great Zimbabwe Ruins" },
 
-      // --- AMERICAS (35) ---
+      // AMERICAS (35)
       { country: "Antigua and Barbuda", capital: "St. John's", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "Nelson's Dockyard" },
       { country: "Argentina", capital: "Buenos Aires", region: "South America", currency: "Argentine Peso (ARS)", landmark: "Iguazu Falls" },
-      { country: "Bahamas", capital: "Nassau", region: "Caribbean", currency: "Bahamian Dollar (BSD)", landmark: "Atlantis Paradise Island" },
+      { country: "Bahamas", capital: "Nassau", region: "Caribbean", currency: "Bahamian Dollar (BSD)", landmark: "Paradise Island" },
       { country: "Barbados", capital: "Bridgetown", region: "Caribbean", currency: "Barbadian Dollar (BBD)", landmark: "Harrison's Cave" },
       { country: "Belize", capital: "Belmopan", region: "Central America", currency: "Belize Dollar (BZD)", landmark: "Great Blue Hole" },
       { country: "Bolivia", capital: "Sucre", region: "South America", currency: "Boliviano (BOB)", landmark: "Salar de Uyuni" },
@@ -272,31 +270,30 @@
       { country: "Panama", capital: "Panama City", region: "Central America", currency: "Balboa (PAB)", landmark: "Panama Canal" },
       { country: "Paraguay", capital: "Asunción", region: "South America", currency: "Guaraní (PYG)", landmark: "Itaipu Dam" },
       { country: "Peru", capital: "Lima", region: "South America", currency: "Sol (PEN)", landmark: "Machu Picchu" },
-      { country: "Saint Kitts and Nevis", capital: "Basseterre", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "Brimstone Hill Fortress" },
+      { country: "Saint Kitts and Nevis", capital: "Basseterre", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "Brimstone Hill" },
       { country: "Saint Lucia", capital: "Castries", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "The Pitons" },
-      { country: "Saint Vincent and the Grenadines", capital: "Kingstown", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "La Soufrière Volcano" },
-      { country: "Suriname", capital: "Paramaribo", region: "South America", currency: "Surinamese Dollar (SRD)", landmark: "Central Suriname Nature Reserve" },
-      { country: "Trinidad and Tobago", capital: "Port of Spain", region: "Caribbean", currency: "Trinidad & Tobago Dollar (TTD)", landmark: "Pitch Lake" },
+      { country: "Saint Vincent and the Grenadines", capital: "Kingstown", region: "Caribbean", currency: "East Caribbean Dollar (XCD)", landmark: "La Soufrière" },
+      { country: "Suriname", capital: "Paramaribo", region: "South America", currency: "Surinamese Dollar (SRD)", landmark: "Central Suriname Reserve" },
+      { country: "Trinidad and Tobago", capital: "Port of Spain", region: "Caribbean", currency: "Trinidad Dollar (TTD)", landmark: "Pitch Lake" },
       { country: "United States", capital: "Washington, D.C.", region: "North America", currency: "US Dollar ($)", landmark: "Statue of Liberty" },
       { country: "Uruguay", capital: "Montevideo", region: "South America", currency: "Uruguayan Peso (UYU)", landmark: "Casapueblo" },
-      { country: "Venezuela", capital: "Caracas", region: "South America", currency: "Bolívar Soberano (VES)", landmark: "Angel Falls" },
+      { country: "Venezuela", capital: "Caracas", region: "South America", currency: "Bolívar (VES)", landmark: "Angel Falls" },
 
-      // --- OCEANIA (14) ---
+      // OCEANIA (14)
       { country: "Australia", capital: "Canberra", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Sydney Opera House" },
-      { country: "Fiji", capital: "Suva", region: "Oceania", currency: "Fijian Dollar (FJD)", landmark: "Bouma National Heritage Park" },
-      { country: "Kiribati", capital: "Tarawa", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Christmas Island Atoll" },
+      { country: "Fiji", capital: "Suva", region: "Oceania", currency: "Fijian Dollar (FJD)", landmark: "Bouma National Park" },
+      { country: "Kiribati", capital: "Tarawa", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Christmas Island" },
       { country: "Marshall Islands", capital: "Majuro", region: "Oceania", currency: "US Dollar ($)", landmark: "Bikini Atoll" },
       { country: "Micronesia", capital: "Palikir", region: "Oceania", currency: "US Dollar ($)", landmark: "Nan Madol Ruins" },
       { country: "Nauru", capital: "Yaren", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Anibare Bay" },
       { country: "New Zealand", capital: "Wellington", region: "Oceania", currency: "NZ Dollar (NZD)", landmark: "Milford Sound" },
       { country: "Palau", capital: "Ngerulmud", region: "Oceania", currency: "US Dollar ($)", landmark: "Rock Islands" },
       { country: "Papua New Guinea", capital: "Port Moresby", region: "Oceania", currency: "Kina (PGK)", landmark: "Kokoda Track" },
-      { country: "Samoa", capital: "Apia", region: "Oceania", currency: "Tālā (WST)", landmark: "To Sua Ocean Trench" },
-      { country: "Solomon Islands", capital: "Honiara", region: "Oceania", currency: "Solomon Islands Dollar (SBD)", landmark: "Marovo Lagoon" },
+      { country: "Samoa", capital: "Apia", region: "Oceania", currency: "Tālā (WST)", landmark: "To Sua Trench" },
+      { country: "Solomon Islands", capital: "Honiara", region: "Oceania", currency: "Solomon Dollar (SBD)", landmark: "Marovo Lagoon" },
       { country: "Tonga", capital: "Nukuʻalofa", region: "Oceania", currency: "Paʻanga (TOP)", landmark: "Haʻamonga ʻa Maui" },
-      { country: "Tuvalu", capital: "Funafuti", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Funafuti Marine Conservation" },
-      { country: "Vanuatu", capital: "Port Vila", region: "Oceania", currency: "Vatu (VUV)", landmark: "Mount Yasur Volcano" }
-    ];
+      { country: "Tuvalu", capital: "Funafuti", region: "Oceania", currency: "Australian Dollar (AUD)", landmark: "Funafuti Lagoon" },
+      { country: "Vanuatu", capital: "Port Vila", region: "Oceania", currency: "Vatu (VUV)", landmark: "Mount Yasur" }
     ];
 
     const clueRegionEl = document.getElementById('clueRegion');
@@ -309,11 +306,11 @@
     const streakEl = document.getElementById('reconStreak');
     const timerEl = document.getElementById('reconTimer');
 
-    // Synthesizer
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let audioCtx = null;
     function playBeep(freq, type = 'square', duration = 0.08) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
       try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = type;
@@ -339,14 +336,12 @@
       statusMsgEl.textContent = "Identify target country from telemetry";
       statusMsgEl.className = "text-center text-xs text-zinc-500 pt-1";
 
-      // Pick target
       currentTarget = geoData[Math.floor(Math.random() * geoData.length)];
       clueRegionEl.textContent = currentTarget.region;
       clueCapitalEl.textContent = currentTarget.capital;
       clueCurrencyEl.textContent = currentTarget.currency;
       clueLandmarkEl.textContent = currentTarget.landmark;
 
-      // Pick 3 random decoys
       const decoys = geoData.filter(d => d.country !== currentTarget.country)
                              .sort(() => 0.5 - Math.random())
                              .slice(0, 3);
@@ -414,6 +409,7 @@
       }, 1000);
     }
 
+    // Initialize round on load
     nextQuestion();
   </script>
 </body>
