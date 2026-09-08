@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Silicon Arcade // Geo Sat-Link</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="haptics.js"></script>
+  <style>
+    body { font-family: 'Fira Code', monospace; touch-action: manipulation; }
+    .radar-grid {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 0);
+      background-size: 16px 16px;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col items-center justify-between p-4 md:p-8 select-none">
+
+  <!-- Header -->
+  <header class="max-w-md w-full flex justify-between items-center border-b border-zinc-800 pb-4">
+    <a href="/" class="text-xs text-zinc-400 hover:text-sky-400 transition-colors flex items-center gap-1">
+      &larr; [RETURN_TO_HUB]
+    </a>
+    <div class="text-xs text-sky-400 font-bold">ORBITAL // GEO_RECON_v1.0</div>
+  </header>
+
+  <!-- Game Stage -->
+  <main class="flex flex-col items-center my-4 w-full max-w-md">
+    <!-- HUD -->
+    <div class="flex justify-between w-full bg-zinc-900 border border-zinc-800 p-3 rounded-t-lg text-xs">
+      <div>
+        <span class="text-zinc-500">STREAK:</span>
+        <span id="reconStreak" class="text-sky-400 font-bold text-lg ml-1">0</span>
+      </div>
+      <div>
+        <span class="text-zinc-500">SCORE:</span>
+        <span id="reconScore" class="text-emerald-400 font-bold text-lg ml-1">0</span>
+      </div>
+      <div>
+        <span class="text-zinc-500">TTL:</span>
+        <span id="reconTimer" class="text-rose-400 font-bold text-lg ml-1">15s</span>
+      </div>
+    </div>
+
+    <!-- Telemetry Monitor -->
+    <div class="w-full bg-zinc-900/90 border-x border-zinc-800 p-5 flex flex-col gap-3 radar-grid">
+      <div class="flex justify-between text-[11px] text-zinc-500 border-b border-zinc-800 pb-2">
+        <span>SAT_ID: ORBITER-09</span>
+        <span id="signalStatus" class="text-sky-400 animate-pulse">● SIGNAL_LOCKED</span>
+      </div>
+
+      <div class="space-y-2 py-2">
+        <div class="text-xs">
+          <span class="text-zinc-500">REGION:</span> 
+          <span id="clueRegion" class="text-zinc-200 font-semibold ml-1">--</span>
+        </div>
+        <div class="text-xs">
+          <span class="text-zinc-500">CAPITAL_NODE:</span> 
+          <span id="clueCapital" class="text-amber-400 font-bold ml-1">--</span>
+        </div>
+        <div class="text-xs">
+          <span class="text-zinc-500">PRIMARY_CURRENCY:</span> 
+          <span id="clueCurrency" class="text-zinc-200 ml-1">--</span>
+        </div>
+        <div class="text-xs">
+          <span class="text-zinc-500">LANDMARK_SIGNATURE:</span> 
+          <span id="clueLandmark" class="text-sky-300 ml-1">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Option Coordinates -->
+    <div class="w-full bg-zinc-900 border border-zinc-800 rounded-b-lg p-4 flex flex-col gap-2.5">
+      <div id="optionsGrid" class="grid grid-cols-1 gap-2">
+        <!-- Buttons injected by JS -->
+      </div>
+      <div id="statusMsg" class="text-center text-xs text-zinc-500 pt-1">
+        Identify target country from telemetry
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-xs text-zinc-600 text-center pb-2">
+    Silicon Arcade • Satellite telemetry reconnaissance training
+  </footer>
+
+  <script>
+    const geoData = [
+      { country: "Japan", capital: "Tokyo", region: "East Asia", currency: "Yen (¥)", landmark: "Mount Fuji" },
+      { country: "India", capital: "New Delhi", region: "South Asia", currency: "Indian Rupee (₹)", landmark: "Taj Mahal" },
+      { country: "Brazil", capital: "Brasília", region: "South America", currency: "Real (R$)", landmark: "Christ the Redeemer" },
+      { country: "Australia", capital: "Canberra", region: "Oceania", currency: "Australian Dollar (A$)", landmark: "Sydney Opera House" },
+      { country: "Egypt", capital: "Cairo", region: "North Africa", currency: "Egyptian Pound (E£)", landmark: "Giza Necropolis" },
+      { country: "Canada", capital: "Ottawa", region: "North America", currency: "Canadian Dollar (C$)", landmark: "Niagara Falls" },
+      { country: "France", capital: "Paris", region: "Western Europe", currency: "Euro (€)", landmark: "Eiffel Tower" },
+      { country: "South Korea", capital: "Seoul", region: "East Asia", currency: "Won (₩)", landmark: "Gyeongbokgung Palace" },
+      { country: "Kenya", capital: "Nairobi", region: "East Africa", currency: "Kenyan Shilling (KSh)", landmark: "Maasai Mara" },
+      { country: "Germany", capital: "Berlin", region: "Central Europe", currency: "Euro (€)", landmark: "Brandenburg Gate" },
+      { country: "Iceland", capital: "Reykjavík", region: "Northern Europe", currency: "Icelandic Króna (kr)", landmark: "Blue Lagoon" },
+      { country: "Mexico", capital: "Mexico City", region: "North America", currency: "Mexican Peso ($)", landmark: "Chichen Itza" }
+    ];
+
+    const clueRegionEl = document.getElementById('clueRegion');
+    const clueCapitalEl = document.getElementById('clueCapital');
+    const clueCurrencyEl = document.getElementById('clueCurrency');
+    const clueLandmarkEl = document.getElementById('clueLandmark');
+    const optionsGridEl = document.getElementById('optionsGrid');
+    const statusMsgEl = document.getElementById('statusMsg');
+    const scoreEl = document.getElementById('reconScore');
+    const streakEl = document.getElementById('reconStreak');
+    const timerEl = document.getElementById('reconTimer');
+
+    // Synthesizer
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq, type = 'square', duration = 0.08) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    let currentTarget = null;
+    let score = 0;
+    let streak = 0;
+    let timeLeft = 15;
+    let timerInterval = null;
+    let acceptsInput = true;
+
+    function nextQuestion() {
+      acceptsInput = true;
+      statusMsgEl.textContent = "Identify target country from telemetry";
+      statusMsgEl.className = "text-center text-xs text-zinc-500 pt-1";
+
+      // Pick target
+      currentTarget = geoData[Math.floor(Math.random() * geoData.length)];
+      clueRegionEl.textContent = currentTarget.region;
+      clueCapitalEl.textContent = currentTarget.capital;
+      clueCurrencyEl.textContent = currentTarget.currency;
+      clueLandmarkEl.textContent = currentTarget.landmark;
+
+      // Pick 3 random decoys
+      const decoys = geoData.filter(d => d.country !== currentTarget.country)
+                             .sort(() => 0.5 - Math.random())
+                             .slice(0, 3);
+
+      const choices = [currentTarget, ...decoys].sort(() => 0.5 - Math.random());
+
+      optionsGridEl.innerHTML = '';
+      choices.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = "w-full py-2.5 px-3 bg-zinc-950 border border-zinc-800 hover:border-sky-500/60 rounded text-xs text-zinc-300 font-semibold text-left transition-all active:scale-[0.99] flex justify-between";
+        btn.innerHTML = `<span>&gt; ${c.country}</span><span class="text-zinc-600 font-normal">LOC://SYS</span>`;
+        btn.onclick = () => selectAnswer(btn, c.country);
+        optionsGridEl.appendChild(btn);
+      });
+
+      resetTimer();
+    }
+
+    function selectAnswer(btn, selectedCountry) {
+      if (!acceptsInput) return;
+      acceptsInput = false;
+      clearInterval(timerInterval);
+
+      if (selectedCountry === currentTarget.country) {
+        score += 20 + (timeLeft * 2);
+        streak += 1;
+        scoreEl.textContent = score;
+        streakEl.textContent = streak;
+        btn.className = "w-full py-2.5 px-3 bg-emerald-950/80 border border-emerald-500 rounded text-xs text-emerald-300 font-semibold text-left flex justify-between";
+        statusMsgEl.textContent = "TARGET VERIFIED // COORDINATES CONFIRMED";
+        statusMsgEl.className = "text-center text-xs text-emerald-400 font-bold pt-1";
+        playBeep(587, 'triangle', 0.12);
+        if (typeof triggerHaptic === 'function') triggerHaptic('LIGHT');
+      } else {
+        streak = 0;
+        streakEl.textContent = streak;
+        btn.className = "w-full py-2.5 px-3 bg-rose-950/80 border border-rose-500 rounded text-xs text-rose-300 font-semibold text-left flex justify-between";
+        statusMsgEl.textContent = `TARGET MISMATCH // ACTUAL: ${currentTarget.country.toUpperCase()}`;
+        statusMsgEl.className = "text-center text-xs text-rose-400 font-bold pt-1";
+        playBeep(180, 'sawtooth', 0.2);
+        if (typeof triggerHaptic === 'function') triggerHaptic('HEAVY');
+      }
+
+      setTimeout(nextQuestion, 1400);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timeLeft = 15;
+      timerEl.textContent = `${timeLeft}s`;
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = `${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          acceptsInput = false;
+          streak = 0;
+          streakEl.textContent = streak;
+          statusMsgEl.textContent = `SIGNAL LOST // TARGET WAS ${currentTarget.country.toUpperCase()}`;
+          statusMsgEl.className = "text-center text-xs text-rose-500 font-bold pt-1";
+          playBeep(140, 'sawtooth', 0.25);
+          if (typeof triggerHaptic === 'function') triggerHaptic('HEAVY');
+          setTimeout(nextQuestion, 1600);
+        }
+      }, 1000);
+    }
+
+    nextQuestion();
+  </script>
+</body>
+</html>
